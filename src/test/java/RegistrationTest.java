@@ -20,4 +20,14 @@ public class RegistrationTest {
         registrationPage.registerNewUser(name, email, password);
 
     }
+
+    @Test
+    public void registerNewUserIncorrectPasswordNegativeTest(){
+        String shortPassword = faker.lorem().characters(5, true);
+        ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
+        LoginPage loginPage = constructorPage.openLoginPage();
+        RegistrationPage registrationPage = loginPage.openRegistrationPage();
+        registrationPage.registerNewUserWithIncorrectPassword(name, email, shortPassword);
+
+    }
 }

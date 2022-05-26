@@ -22,6 +22,9 @@ public class RegistrationPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//h2[text()='Регистрация']")
     private SelenideElement h2HeaderText;
 
+    @FindBy(how = How.CLASS_NAME, using = "input__error")
+    private SelenideElement passwordValidationError;
+
 
     public LoginPage registerNewUser(String name, String email, String password){
         nameInputField.setValue(name);
@@ -31,6 +34,14 @@ public class RegistrationPage extends BasePage{
         LoginPage loginPage2 = page(LoginPage.class);
         loginPage2.checkH2HeaderVisible();
         return loginPage2;
+    }
+
+    public void registerNewUserWithIncorrectPassword(String name, String email, String password){
+        nameInputField.setValue(name);
+        emailInputField.setValue(email);
+        passwordInputField.setValue(password);
+        submitButton.click();
+        passwordValidationError.shouldBe(Condition.visible);
     }
 
     public void checkH2HeaderVisible(){
