@@ -18,7 +18,6 @@ public class RegistrationTest {
         LoginPage loginPage = constructorPage.openLoginPage();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUser(name, email, password);
-
     }
 
     @Test
@@ -28,6 +27,5 @@ public class RegistrationTest {
         LoginPage loginPage = constructorPage.openLoginPage();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUserWithIncorrectPassword(name, email, shortPassword);
-
     }
 }
