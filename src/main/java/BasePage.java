@@ -18,6 +18,12 @@ public class BasePage {
     @FindBy(how = How.XPATH, using = "//p[text()='Личный Кабинет']")
     protected  SelenideElement personalAccountHeaderButton;
 
+    @FindBy(how = How.XPATH, using = "//input[@name='Пароль']")
+    protected SelenideElement passwordInputField;
+
+    @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
+    protected SelenideElement submitButton;
+
     public String getMainPageUrl() {
         return mainPageUrl;
     }

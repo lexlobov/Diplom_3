@@ -11,13 +11,7 @@ public class RegistrationPage extends BasePage{
     private SelenideElement nameInputField;
 
     @FindBy(how = How.XPATH, using = ".//form/fieldset[2]/div[1]/div/input")
-    private SelenideElement emailInputField;
-
-    @FindBy(how = How.XPATH, using = "//input[@name='Пароль']")
-    private SelenideElement passwordInputField;
-
-    @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
-    private SelenideElement submitButton;
+    protected SelenideElement emailInputField;
 
     @FindBy(how = How.XPATH, using = "//h2[text()='Регистрация']")
     private SelenideElement h2HeaderText;

@@ -12,6 +12,10 @@ public class LoginPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//h2[text()='Вход']")
     private SelenideElement h2HeaderText;
 
+    @FindBy(how = How.XPATH, using = ".//form/fieldset/div[1]/div/input")
+    protected SelenideElement emailInputField;
+
+
     public RegistrationPage openRegistrationPage(){
         registrationLink.click();
         RegistrationPage registrationPage = page(RegistrationPage.class);
@@ -21,5 +25,14 @@ public class LoginPage extends BasePage{
 
     public void checkH2HeaderVisible(){
         h2HeaderText.shouldBe(Condition.visible);
+    }
+
+    public ConstructorPage authorize(String email, String password){
+        emailInputField.setValue(email);
+        passwordInputField.setValue(password);
+        submitButton.click();
+        ConstructorPage constructorPage = page(ConstructorPage.class);
+        return constructorPage;
+
     }
 }
