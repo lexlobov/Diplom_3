@@ -5,11 +5,13 @@ import pageObject.ConstructorPage;
 import pageObject.LoginPage;
 import pageObject.RegistrationPage;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationTest {
 
     BasePage basePage = new BasePage();
+    UserSteps steps = new UserSteps();
 
     Faker faker = new Faker();
     String name = faker.name().firstName();
@@ -22,6 +24,9 @@ public class RegistrationTest {
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUser(name, email, password);
+        steps.loginUserPositive(email,password);
+        steps.deleteUser();
+        closeWebDriver();
     }
 
     @Test
@@ -31,5 +36,6 @@ public class RegistrationTest {
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUserWithIncorrectPassword(name, email, shortPassword);
+        closeWebDriver();
     }
 }

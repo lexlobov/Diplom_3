@@ -1,4 +1,4 @@
-package api.model;
+package api;
 
 import api.BaseHttpConfig;
 import io.restassured.response.ValidatableResponse;

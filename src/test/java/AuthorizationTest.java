@@ -66,7 +66,6 @@ public class AuthorizationTest {
     public void userAuthorizationAuthLinkOnForgotPasswordPagePositiveTest() {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
-        sleep(2000);
         loginPage.openForgotPasswordPage().openLoginPage();
         loginPage.authorize(email, password);
         closeWebDriver();
