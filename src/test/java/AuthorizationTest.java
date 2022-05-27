@@ -1,8 +1,14 @@
+import com.codeborne.selenide.AuthenticationType;
+import com.codeborne.selenide.Credentials;
 import com.github.javafaker.Faker;
-import org.junit.Before;
 import org.junit.Test;
+import pageObject.BasePage;
+import pageObject.ConstructorPage;
+import pageObject.LoginPage;
+import pageObject.RegistrationPage;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class AuthorizationTest {
 
@@ -21,5 +27,13 @@ public class AuthorizationTest {
         registrationPage.registerNewUser(name, email, password);
         loginPage.authorize(email, password);
         constructorPage.checkSubmitButtonText();
+    }
+
+    @Test
+    public void dkfdfkdf(){
+        ConstructorPage constructorPage =  new ConstructorPage();
+        open(basePage.getMainPageUrl(), AuthenticationType.BASIC, new Credentials(email, password));
+        constructorPage.checkSubmitButtonText();
+        sleep(4000);
     }
 }

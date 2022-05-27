@@ -1,5 +1,9 @@
 import com.github.javafaker.Faker;
 import org.junit.Test;
+import pageObject.BasePage;
+import pageObject.ConstructorPage;
+import pageObject.LoginPage;
+import pageObject.RegistrationPage;
 
 import static com.codeborne.selenide.Selenide.open;
 

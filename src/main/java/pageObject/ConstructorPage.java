@@ -1,14 +1,12 @@
+package pageObject;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.hamcrest.Factory;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import java.nio.channels.SelectableChannel;
-
 import static com.codeborne.selenide.Selenide.page;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class ConstructorPage extends BasePage{
 
