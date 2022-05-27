@@ -36,4 +36,11 @@ public class PersonalAccountPage extends BasePage{
         constructorPage.checkSubmitButtonText();
         return constructorPage;
     }
+
+    public LoginPage logOut(){
+        logOutButton.click();
+        LoginPage loginPage = page(LoginPage.class);
+        loginPage.checkH2HeaderVisible();
+        return loginPage;
+    }
 }

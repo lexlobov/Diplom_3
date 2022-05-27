@@ -35,7 +35,7 @@ public class PersonalAccountTest {
     }
 
     @Test
-    public void goToConstructorPageViaHeaderLogo(){
+    public void goToConstructorPageViaHeaderLogoTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
         personalAccountPage.openConstructorPageViaLogo();
@@ -44,10 +44,19 @@ public class PersonalAccountTest {
     }
 
     @Test
-    public void goToConstructorPageViaConstructorHeaderButton(){
+    public void goToConstructorPageViaConstructorHeaderButtonTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
         personalAccountPage.openConstructorPageViaConstructorHeaderButton();
+        closeWebDriver();
+        steps.deleteUser();
+    }
+
+    @Test
+    public void logOutTest(){
+        LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
+        PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
+        personalAccountPage.logOut();
         closeWebDriver();
         steps.deleteUser();
     }
