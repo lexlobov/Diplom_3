@@ -30,4 +30,9 @@ public class ConstructorPage extends BasePage{
     public void checkSubmitButtonText(){
         makeAnOrderButton.shouldBe(Condition.visible);
     }
+
+    public PersonalAccountPage openPersonalAccountPage(){
+        personalAccountHeaderButton.click();
+        return page(PersonalAccountPage.class);
+    }
 }
