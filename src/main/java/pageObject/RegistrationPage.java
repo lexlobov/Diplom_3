@@ -21,6 +21,9 @@ public class RegistrationPage extends BasePage{
     @FindBy(how = How.CLASS_NAME, using = "input__error")
     private SelenideElement passwordValidationError;
 
+    @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
+    private SelenideElement authLink;
+
 
     public LoginPage registerNewUser(String name, String email, String password){
         nameInputField.setValue(name);
@@ -38,6 +41,11 @@ public class RegistrationPage extends BasePage{
         passwordInputField.setValue(password);
         submitButton.click();
         passwordValidationError.shouldBe(Condition.visible);
+    }
+
+    public LoginPage openLoginPageAuthLink(){
+        authLink.click();
+        return page(LoginPage.class);
     }
 
     public void checkH2HeaderVisible(){

@@ -17,6 +17,9 @@ public class LoginPage extends BasePage{
     @FindBy(how = How.XPATH, using = ".//form/fieldset/div[1]/div/input")
     protected SelenideElement emailInputField;
 
+    @FindBy(how = How.XPATH, using = "//a[text()='Восстановить пароль']")
+    private SelenideElement forgotPasswordLink;
+
 
     public RegistrationPage openRegistrationPage(){
         registrationLink.click();
@@ -35,6 +38,12 @@ public class LoginPage extends BasePage{
         submitButton.click();
         ConstructorPage constructorPage = page(ConstructorPage.class);
         return constructorPage;
+    }
 
+    public ForgotPasswordPage openForgotPasswordPage(){
+        forgotPasswordLink.click();
+        ForgotPasswordPage forgotPasswordPage = page(ForgotPasswordPage.class);
+        forgotPasswordPage.checkH2HeaderTextVisible();
+        return forgotPasswordPage;
     }
 }

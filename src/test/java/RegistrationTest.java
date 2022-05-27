@@ -19,7 +19,7 @@ public class RegistrationTest {
     @Test
     public void registerNewUserPositiveTest(){
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
-        LoginPage loginPage = constructorPage.openLoginPage();
+        LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUser(name, email, password);
     }
@@ -28,7 +28,7 @@ public class RegistrationTest {
     public void registerNewUserIncorrectPasswordNegativeTest(){
         String shortPassword = faker.lorem().characters(5, true);
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
-        LoginPage loginPage = constructorPage.openLoginPage();
+        LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUserWithIncorrectPassword(name, email, shortPassword);
     }

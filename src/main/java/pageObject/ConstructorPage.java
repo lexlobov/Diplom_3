@@ -13,8 +13,15 @@ public class ConstructorPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//button[text()='Оформить заказ']")
     private SelenideElement makeAnOrderButton;
 
-    public LoginPage openLoginPage(){
+    public LoginPage openLoginPageHeaderButton(){
         personalAccountHeaderButton.click();
+        LoginPage loginPage = page(LoginPage.class);
+        loginPage.checkH2HeaderVisible();
+        return loginPage;
+    }
+
+    public LoginPage openLoginAuthorizeButtonButton(){
+        submitButton.click();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.checkH2HeaderVisible();
         return loginPage;
