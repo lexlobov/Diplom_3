@@ -6,22 +6,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class ConstructorPage extends BasePage{
 
     @FindBy(how = How.XPATH, using = "//button[text()='Оформить заказ']")
     private SelenideElement makeAnOrderButton;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Соусы']")
+    @FindBy(how = How.CSS, using = ".BurgerIngredients_ingredients__1N8v2 .tab_tab__1SPyG:nth-child(2n)")
     private SelenideElement saucesTab;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Начинки']")
+    @FindBy(how = How.CSS, using = ".BurgerIngredients_ingredients__1N8v2 .tab_tab__1SPyG:nth-child(3n)")
     private SelenideElement fillingTab;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Булки']")
+    @FindBy(how = How.CSS, using = ".BurgerIngredients_ingredients__1N8v2 .tab_tab__1SPyG:nth-child(1n)")
     private SelenideElement bunsTab;
 
     @FindBy(how = How.XPATH,using = "//h2[text()='Булки']")
@@ -56,8 +53,19 @@ public class ConstructorPage extends BasePage{
         return page(PersonalAccountPage.class);
     }
 
-    public void scrollSaucesIntoView(){
-        fillingHeader.is(Condition.visible);
+    public void selectSauces(){
+        saucesTab.click();
+        saucesTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
+    }
+
+    public void selectFillings(){
+        fillingTab.click();
+        fillingTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
+    }
+
+    public void selectBuns(){
+        bunsTab.click();
+        bunsTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
 //    public void scrollFillingIntoView(){

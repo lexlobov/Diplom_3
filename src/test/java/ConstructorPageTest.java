@@ -1,4 +1,3 @@
-import org.junit.Before;
 import org.junit.Test;
 import pageObject.BasePage;
 import pageObject.ConstructorPage;
@@ -13,7 +12,9 @@ public class ConstructorPageTest {
 
 
     @Test
-    public void saucesIntoView() throws Exception{
-        constructorPage.scrollSaucesIntoView();
+    public void selectIngredientsTest(){
+        constructorPage.selectSauces();
+        constructorPage.selectFillings();
+        constructorPage.selectBuns();
     }
 }
