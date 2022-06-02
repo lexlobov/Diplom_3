@@ -1,4 +1,5 @@
 import com.github.javafaker.Faker;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import pageObject.BasePage;
 import pageObject.ConstructorPage;
@@ -8,6 +9,9 @@ import pageObject.RegistrationPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
+
+
+@DisplayName("Различные сценарии регистрации")
 public class RegistrationTest {
 
     BasePage basePage = new BasePage();
@@ -19,6 +23,7 @@ public class RegistrationTest {
     String password = faker.lorem().characters(10, true);
 
     @Test
+    @DisplayName("Регистрация нового пользователя, позитивный сценарий")
     public void registerNewUserPositiveTest(){
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
@@ -30,6 +35,7 @@ public class RegistrationTest {
     }
 
     @Test
+    @DisplayName("Регистрация нового пользователя, негативный сценарий с некорректным паролем менее 6 символов")
     public void registerNewUserIncorrectPasswordNegativeTest(){
         String shortPassword = faker.lorem().characters(5, true);
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);

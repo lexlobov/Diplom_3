@@ -1,5 +1,6 @@
 import api.model.UserModel;
 import com.github.javafaker.Faker;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import pageObject.BasePage;
@@ -9,6 +10,7 @@ import pageObject.PersonalAccountPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@DisplayName("Переходы со страници личного кабинета")
 public class PersonalAccountTest {
 
     BasePage basePage = new BasePage();
@@ -26,6 +28,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Переход из конструктора на страницу личного кабинета")
     public void goToPersonalAccountPageTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
@@ -35,6 +38,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Переход со страницы личного кабинета на конструктор по нажатию на лого")
     public void goToConstructorPageViaHeaderLogoTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
@@ -44,6 +48,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Переход со страницы личного кабинета на конструктор через кнопку в хэдере")
     public void goToConstructorPageViaConstructorHeaderButtonTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
@@ -53,6 +58,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Выход из личного кабинета")
     public void logOutTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();

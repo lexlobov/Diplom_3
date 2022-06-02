@@ -2,6 +2,7 @@ package pageObject;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -30,6 +31,7 @@ public class ConstructorPage extends BasePage{
     @FindBy(how = How.XPATH,using = "//h2[text()='Начинки']")
     private SelenideElement fillingHeader;
 
+    @Step("Открытие страницы авторизации через кнопку в хэдере")
     public LoginPage openLoginPageHeaderButton(){
         personalAccountHeaderButton.click();
         LoginPage loginPage = page(LoginPage.class);
@@ -37,6 +39,7 @@ public class ConstructorPage extends BasePage{
         return loginPage;
     }
 
+    @Step("Открытие страницы авторизации через кнопку авторизации")
     public LoginPage openLoginAuthorizeButtonButton(){
         submitButton.click();
         LoginPage loginPage = page(LoginPage.class);
@@ -44,32 +47,32 @@ public class ConstructorPage extends BasePage{
         return loginPage;
     }
 
+    @Step("проверка, что кнопка Подтвредить видна")
     public void checkSubmitButtonText(){
         makeAnOrderButton.shouldBe(Condition.visible);
     }
 
+    @Step("Открытие страницы личного кабинета")
     public PersonalAccountPage openPersonalAccountPage(){
         personalAccountHeaderButton.click();
         return page(PersonalAccountPage.class);
     }
 
+    @Step("Выбор вкладки Соусы")
     public void selectSauces(){
         saucesTab.click();
         saucesTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
+    @Step("Выбор вкладки Начинки")
     public void selectFillings(){
         fillingTab.click();
         fillingTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
+    @Step("Выбор вкладки Булочки")
     public void selectBuns(){
         bunsTab.click();
         bunsTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
-
-//    public void scrollFillingIntoView(){
-//        fillingTab.click();
-//        saucesHeader.
-//    }
 }

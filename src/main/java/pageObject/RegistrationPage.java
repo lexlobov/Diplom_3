@@ -2,6 +2,7 @@ package pageObject;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -25,6 +26,7 @@ public class RegistrationPage extends BasePage{
     private SelenideElement authLink;
 
 
+    @Step("Регистрация нового пользователя")
     public LoginPage registerNewUser(String name, String email, String password){
         nameInputField.setValue(name);
         emailInputField.setValue(email);
@@ -35,6 +37,7 @@ public class RegistrationPage extends BasePage{
         return loginPage2;
     }
 
+    @Step("Регистрация нового пользователя с некорректным паролем")
     public void registerNewUserWithIncorrectPassword(String name, String email, String password){
         nameInputField.setValue(name);
         emailInputField.setValue(email);
@@ -43,11 +46,13 @@ public class RegistrationPage extends BasePage{
         passwordValidationError.shouldBe(Condition.visible);
     }
 
+    @Step("Открытие страницы авторизации")
     public LoginPage openLoginPageAuthLink(){
         authLink.click();
         return page(LoginPage.class);
     }
 
+    @Step("Проверка, что заголовок присутствует и соответствует странице")
     public void checkH2HeaderVisible(){
         h2HeaderText.shouldBe(Condition.visible);
     }

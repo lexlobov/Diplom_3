@@ -1,5 +1,6 @@
 import api.model.UserModel;
 import com.github.javafaker.Faker;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import pageObject.BasePage;
@@ -9,6 +10,7 @@ import pageObject.LoginPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@DisplayName("Различные сценарии авторизации")
 public class AuthorizationTest {
 
     BasePage basePage = new BasePage();
@@ -26,6 +28,7 @@ public class AuthorizationTest {
     }
 
     @Test
+    @DisplayName("Авторизация, позитивный сценарий")
     public void userAuthorizationPositiveTest() {
         LoginPage loginPage = open(basePage.getMainPageUrl() + "login", LoginPage.class);
         ConstructorPage constructorPage = loginPage.authorize(email, password);
@@ -35,6 +38,7 @@ public class AuthorizationTest {
     }
 
     @Test
+    @DisplayName("Авторизация, позитивный сценарий через кнопку в хэдере")
     public void userAuthorizationPersonalAccountPositiveTest() {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
@@ -44,6 +48,7 @@ public class AuthorizationTest {
     }
 
     @Test
+    @DisplayName("Авторизация, позитивный сценарий через кнопку авторизации в конструкторе")
     public void userAuthorizationAuthorizeButtonPositiveTest() {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
@@ -53,6 +58,7 @@ public class AuthorizationTest {
     }
 
     @Test
+    @DisplayName("Авторизация, позитивный сценарий через ссылку на странице регистрации")
     public void userAuthorizationAUthLinkOnRegistrationPagePositiveTest() {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
@@ -63,6 +69,7 @@ public class AuthorizationTest {
     }
 
     @Test
+    @DisplayName("Авторизация позитивный сценарий через ссылку на экране восстановления пароля")
     public void userAuthorizationAuthLinkOnForgotPasswordPagePositiveTest() {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
