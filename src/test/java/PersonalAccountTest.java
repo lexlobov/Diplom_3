@@ -3,10 +3,10 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import pageObject.BasePage;
+import page_object.BasePage;
 
-import pageObject.LoginPage;
-import pageObject.PersonalAccountPage;
+import page_object.LoginPage;
+import page_object.PersonalAccountPage;
 
 import static com.codeborne.selenide.Selenide.*;
 

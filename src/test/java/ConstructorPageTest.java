@@ -1,7 +1,7 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
-import pageObject.BasePage;
-import pageObject.ConstructorPage;
+import page_object.BasePage;
+import page_object.ConstructorPage;
 
 import static com.codeborne.selenide.Selenide.open;
 

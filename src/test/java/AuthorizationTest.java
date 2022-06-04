@@ -3,9 +3,9 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import pageObject.BasePage;
-import pageObject.ConstructorPage;
-import pageObject.LoginPage;
+import page_object.BasePage;
+import page_object.ConstructorPage;
+import page_object.LoginPage;
 
 
 import static com.codeborne.selenide.Selenide.*;
