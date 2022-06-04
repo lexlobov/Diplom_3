@@ -1,6 +1,7 @@
 import api.model.UserModel;
 import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import page_object.BasePage;
@@ -27,14 +28,18 @@ public class AuthorizationTest {
         steps.createNewUser(user);
     }
 
+    @After
+    public void tearDown(){
+        closeWebDriver();
+        steps.deleteUser();
+    }
+
     @Test
     @DisplayName("Авторизация, позитивный сценарий")
     public void userAuthorizationPositiveTest() {
         LoginPage loginPage = open(basePage.getMainPageUrl() + "login", LoginPage.class);
         ConstructorPage constructorPage = loginPage.authorize(email, password);
         constructorPage.checkSubmitButtonText();
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -43,8 +48,6 @@ public class AuthorizationTest {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         loginPage.authorize(email, password);
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -53,8 +56,6 @@ public class AuthorizationTest {
         ConstructorPage constructorPage = open(basePage.getMainPageUrl(), ConstructorPage.class);
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
         loginPage.authorize(email, password);
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -64,8 +65,6 @@ public class AuthorizationTest {
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
         loginPage.openRegistrationPage().openLoginPageAuthLink();
         loginPage.authorize(email, password);
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -75,7 +74,5 @@ public class AuthorizationTest {
         LoginPage loginPage = constructorPage.openLoginAuthorizeButtonButton();
         loginPage.openForgotPasswordPage().openLoginPage();
         loginPage.authorize(email, password);
-        closeWebDriver();
-        steps.deleteUser();
     }
 }

@@ -1,6 +1,7 @@
 import api.model.UserModel;
 import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import page_object.BasePage;
@@ -27,14 +28,18 @@ public class PersonalAccountTest {
         steps.createNewUser(user);
     }
 
+    @After
+    public void tearDown(){
+        closeWebDriver();
+        steps.deleteUser();
+    }
+
     @Test
     @DisplayName("Переход из конструктора на страницу личного кабинета")
     public void goToPersonalAccountPageTest(){
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
         personalAccountPage.checkIfPersonalAccountPageOpen();
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -43,8 +48,6 @@ public class PersonalAccountTest {
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
         personalAccountPage.openConstructorPageViaLogo();
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -53,8 +56,6 @@ public class PersonalAccountTest {
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
         personalAccountPage.openConstructorPageViaConstructorHeaderButton();
-        closeWebDriver();
-        steps.deleteUser();
     }
 
     @Test
@@ -63,7 +64,5 @@ public class PersonalAccountTest {
         LoginPage loginPage = open(basePage.getMainPageUrl()+"login", LoginPage.class);
         PersonalAccountPage personalAccountPage = loginPage.authorize(email, password).openPersonalAccountPage();
         personalAccountPage.logOut();
-        closeWebDriver();
-        steps.deleteUser();
     }
 }

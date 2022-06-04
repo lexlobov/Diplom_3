@@ -1,5 +1,6 @@
 import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Test;
 import page_object.BasePage;
 import page_object.ConstructorPage;
@@ -22,6 +23,13 @@ public class RegistrationTest {
     String email = name + "@" + faker.name().lastName() + ".ru";
     String password = faker.lorem().characters(10, true);
 
+    @After
+    public void tearDown(){
+        steps.loginUserPositive(email,password);
+        steps.deleteUser();
+        closeWebDriver();
+    }
+
     @Test
     @DisplayName("Регистрация нового пользователя, позитивный сценарий")
     public void registerNewUserPositiveTest(){
@@ -29,9 +37,6 @@ public class RegistrationTest {
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUser(name, email, password);
-        steps.loginUserPositive(email,password);
-        steps.deleteUser();
-        closeWebDriver();
     }
 
     @Test
@@ -42,6 +47,5 @@ public class RegistrationTest {
         LoginPage loginPage = constructorPage.openLoginPageHeaderButton();
         RegistrationPage registrationPage = loginPage.openRegistrationPage();
         registrationPage.registerNewUserWithIncorrectPassword(name, email, shortPassword);
-        closeWebDriver();
     }
 }
