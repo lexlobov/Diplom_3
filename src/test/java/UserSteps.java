@@ -34,6 +34,6 @@ public class UserSteps {
 
     @Step("Удаление пользователя")
     public void deleteUser(){
-        ValidatableResponse response = userClient.deleteUser(authToken);
+        userClient.deleteUser(authToken);
     }
 }
